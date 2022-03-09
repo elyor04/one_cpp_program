@@ -89,6 +89,7 @@ class str_dict {
 private:
     string my_dict[100][2];
     unsigned int dict_len = 0;
+    //////////////////////////////////
     int index(string key) {
         for (int i=0; i<dict_len; i++)
             if (my_dict[i][0] == key)
