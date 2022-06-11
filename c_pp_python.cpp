@@ -3,34 +3,48 @@
 
 using namespace std;
 
-int strToInt(string value) {
+typedef long double l_float;
+typedef unsigned long long ul_int;
+
+l_float strToInt(string value) {
     bool minus = false;
     if (value[0] == '-') {
         value = value.substr(1);
         minus = true;
     }
-    int r_vl = 0, len = value.length();
-    for (int i=0; i<len; i++) {
-        r_vl += (int)(((int)value[i] - 48) * (float)pow(10, len-i-1));
+
+    l_float r_val = 0;
+    int _len = value.length();
+
+    for (int i = 0; i < _len; i++) {
+        r_val += (ul_int)(((ul_int)value[i] - 48) * (l_float)pow(10, (_len - i - 1)));
     }
-    if (minus)
-        r_vl *= -1;
-    return r_vl;
+    if (minus) {
+        r_val *= -1;
+    }
+    return r_val;
 }
-string intToStr(int value) {
+
+string intToStr(l_float value) {
     bool minus = false;
     if (value < 0) {
         value *= -1;
         minus = true;
     }
-    string r_vl = ""; int b = 1;
-    while ((int)(value / b) != 0) {
-        r_vl = (char)(((int)(value / b) % 10) + 48) + r_vl;
-        b *= 10;
+    value = (ul_int)value;
+
+    string r_val = ""; ul_int _b = 1;
+    ul_int val_b = value / _b;
+
+    while (val_b != 0) {
+        r_val = (char)((val_b % 10) + 48) + r_val;
+        _b *= 10;
+        val_b = (ul_int)(value / _b);
     }
-    if (minus)
-        r_vl = '-' + r_vl;
-    return r_vl;
+    if (minus) {
+        r_val = '-' + r_val;
+    }
+    return r_val;
 }
 
 class str {
