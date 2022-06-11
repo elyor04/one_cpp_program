@@ -205,7 +205,7 @@ int main() {
 
     // //////////////////////////////////////
 
-    string a = "457"; int b = 457;
+    string a = "457"; l_float b = 457;
     cout << (strToInt(a) == b) << endl;
     cout << (intToStr(b) == a) << endl;
 
